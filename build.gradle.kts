@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "1.9.0"
+    application
 }
 
 group = "me.mattco"
@@ -11,4 +12,8 @@ repositories {
 
 kotlin {
     jvmToolchain(17)
+}
+
+application {
+    mainClass.set("me.mattco.aoc2023.Day") 
 }
