@@ -15,3 +15,7 @@ fun Collection<Int>.mul() = fold(1) { p, c -> p * c }
 fun Collection<Long>.mul() = fold(1L) { p, c -> p * c }
 fun Collection<Float>.mul() = fold(1.0f) { p, c -> p * c }
 fun Collection<Double>.mul() = fold(1.0) { p, c -> p * c }
+
+fun <T> Iterable<T>.eachCount() = groupingBy { it }.eachCount()
+
+fun unreachable(): Nothing = error("unreachable")

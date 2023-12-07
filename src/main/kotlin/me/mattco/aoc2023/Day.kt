@@ -16,7 +16,7 @@ abstract class Day {
     companion object {
         @JvmStatic
         fun main(args: Array<String>) {
-            val activeDay = Day6::class.java
+            val activeDay = Day7::class.java
             val instance: Day = activeDay.getDeclaredConstructor().newInstance()
             val header = "============== ${activeDay.simpleName} =============="
             println(header)
