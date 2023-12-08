@@ -18,4 +18,20 @@ fun Collection<Double>.mul() = fold(1.0) { p, c -> p * c }
 
 fun <T> Iterable<T>.eachCount() = groupingBy { it }.eachCount()
 
+fun Long.factors(): List<Long> {
+    check(this > 0)
+    if (this == 1L) return listOf(1)
+
+    for (n in 2L..(this / 2L)) {
+        if (this % n == 0L)
+            return (this / n).factors() + listOf(n)
+    }
+
+    return listOf(this)
+}
+
+fun gcd(a: Long, b: Long) = a.factors().toSet().intersect(b.factors().toSet()).max()
+
+fun lcm(a: Long, b: Long) = (a * b) / gcd(a, b)
+
 fun unreachable(): Nothing = error("unreachable")
