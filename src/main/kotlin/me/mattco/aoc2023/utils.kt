@@ -7,8 +7,8 @@ fun Int.rangeAround(n: Int, bounds: IntRange) =
     max(this - n, bounds.min())..min(this + n, bounds.max())
 
 fun LongRange.intersection(other: LongRange) = when {
-    endInclusive < other.start || start > other.endInclusive -> null
-    else -> max(start, other.start)..min(endInclusive, other.endInclusive)
+    endInclusive < other.first || start > other.last -> null
+    else -> max(start, other.first)..min(endInclusive, other.last)
 }
 
 fun Collection<Int>.mul() = fold(1) { p, c -> p * c }
@@ -33,5 +33,7 @@ fun Long.factors(): List<Long> {
 fun gcd(a: Long, b: Long) = a.factors().toSet().intersect(b.factors().toSet()).max()
 
 fun lcm(a: Long, b: Long) = (a * b) / gcd(a, b)
+
+fun List<Long>.diff() = zip(drop(1)).map { it.second - it.first }
 
 fun unreachable(): Nothing = error("unreachable")
