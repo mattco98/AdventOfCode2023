@@ -71,3 +71,14 @@ enum class Direction(val dx: Int, val dy: Int) {
 
     fun apply(x: Int, y: Int) = (x + dx) to (y + dy)
 }
+
+fun <T> List<T>.combinations(): List<Pair<T, T>> {
+    val elements = mutableListOf<Pair<T, T>>()
+
+    for (i in indices) {
+        for (j in (i + 1)..lastIndex)
+            elements.add(this[i] to this[j])
+    }
+
+    return elements
+}
